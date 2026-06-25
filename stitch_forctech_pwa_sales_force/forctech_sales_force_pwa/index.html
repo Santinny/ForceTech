@@ -551,10 +551,10 @@
         // Simulated API Call to https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com
         async function fetchSync() {
             try {
-                const response = await fetch('https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com', {
+               const response = await fetch('https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com/api/sync/manual', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ device: 'Sales-Mobile-1', timestamp: Date.now() })
+          body: JSON.stringify({ codusur: 4000, codfilial: "1", numregiao: 1 })
                 });
                 const data = await response.json();
                 console.log('Sync data:', data);
