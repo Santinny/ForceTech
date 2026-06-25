@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Product Catalog - forcTech</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e2e2e8",
+                    "primary-container": "#00e5ff",
+                    "on-tertiary-fixed": "#251a00",
+                    "surface-tint": "#00daf3",
+                    "surface": "#111317",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "tertiary-fixed": "#ffdf96",
+                    "outline-variant": "#3b494c",
+                    "background": "#111317",
+                    "on-secondary": "#002780",
+                    "on-primary-fixed-variant": "#004f58",
+                    "surface-container": "#1e2024",
+                    "inverse-on-surface": "#2f3035",
+                    "tertiary-container": "#fec931",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-background": "#e2e2e8",
+                    "tertiary": "#ffeac0",
+                    "on-tertiary-container": "#6f5500",
+                    "surface-container-low": "#1a1c20",
+                    "surface-container-high": "#282a2e",
+                    "on-secondary-fixed": "#001550",
+                    "surface-variant": "#333539",
+                    "on-surface": "#e2e2e8",
+                    "surface-bright": "#37393e",
+                    "outline": "#849396",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#111317",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#006875",
+                    "primary-fixed": "#9cf0ff",
+                    "on-surface-variant": "#bac9cc",
+                    "on-secondary-fixed-variant": "#003ab3",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#3e2e00",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "secondary-fixed": "#dce1ff",
+                    "tertiary-fixed-dim": "#f3bf26",
+                    "secondary-container": "#0050ee",
+                    "on-primary-container": "#00626e",
+                    "primary-fixed-dim": "#00daf3",
+                    "on-secondary-container": "#d4dbff",
+                    "on-primary": "#00363d",
+                    "primary": "#c3f5ff",
+                    "surface-container-highest": "#333539",
+                    "on-primary-fixed": "#001f24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Outfit"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Outfit"],
+                    "headline-md": ["Outfit"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0F1115;
+            color: #e2e2e8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .neomorphic-raised {
+            background: #111317;
+            box-shadow: -4px -4px 12px rgba(255, 255, 255, 0.03), 
+                        6px 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .neomorphic-inset {
+            background: #111317;
+            box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.05), 
+                        inset 4px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-panel {
+            background: rgba(30, 32, 36, 0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 15px rgba(0, 218, 243, 0.2);
+        }
+
+        .skeleton-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes shimmer {
+            from { background-position: -200% 0; }
+            to { background-position: 200% 0; }
+        }
+
+        .active-scale {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .active-scale:active {
+            transform: scale(0.96);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm h-auto flex flex-col pt-2 pb-4 px-margin-mobile">
+<div class="flex justify-between items-center h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform p-2 hover:bg-white/5 rounded-full">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed-dim">Produtos</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform p-2 hover:bg-white/5 rounded-full">sync</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="mt-2 w-full relative">
+<div class="neomorphic-inset rounded-xl flex items-center px-4 py-3 group focus-within:ring-1 focus-within:ring-primary-fixed-dim/50 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md placeholder:text-on-surface-variant/50" placeholder="Buscar produtos, categorias..." type="text"/>
+<span class="material-symbols-outlined text-on-surface-variant ml-2">filter_list</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-44 pb-32 px-margin-mobile min-h-screen">
+<!-- Categories Horizontal Scroll -->
+<div class="flex gap-3 overflow-x-auto pb-4 -mx-2 px-2 no-scrollbar mb-6">
+<button class="px-5 py-2 glass-panel rounded-full text-primary-fixed-dim border border-primary-fixed-dim/30 font-label-lg whitespace-nowrap">Todos</button>
+<button class="px-5 py-2 glass-panel rounded-full text-on-surface-variant border border-white/5 font-label-lg whitespace-nowrap hover:bg-white/5 transition-colors">Ferragens</button>
+<button class="px-5 py-2 glass-panel rounded-full text-on-surface-variant border border-white/5 font-label-lg whitespace-nowrap hover:bg-white/5 transition-colors">Elétrica</button>
+<button class="px-5 py-2 glass-panel rounded-full text-on-surface-variant border border-white/5 font-label-lg whitespace-nowrap hover:bg-white/5 transition-colors">Hidráulica</button>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-md">
+<!-- Product Card 1 -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="High-quality professional power tool, a cordless drill, displayed in a minimalist dark studio setting with soft cyan neon highlights. The product is shot in high-definition macro photography with a shallow depth of field, reflecting a premium industrial design aesthetic in line with futuristic sales software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3VtNliym8zhwR0ip10t3mKR1lyKizb4UfDPigi89Rqq_ArkP4eT4FkEPQ4A8YgOKp-Vqme2aXS2BUXWCZwaD6yBbVTIwY0FpukKstD9jLWHmOzLynaRXrElmWMZCQZU8D5Um3kI2ATYrVV6xxeateIf0mOhDedE_S3RJR-CarTehZedTghNeCT4ZyJjqSMcbK9WQ_qoEvlWQoiU2EQeoiTFclxckFC_ApzNDqhVSgOiORgY8ZJKj6n6P5TMDnZYtAjtnw3o04x5nd"/>
+<div class="absolute top-2 right-2 glass-panel px-2 py-0.5 rounded-md">
+<span class="text-[10px] font-label-md text-primary-fixed-dim">NEW</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Parafusadeira XT-2000</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-tertiary-container">42 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 849,90</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Premium set of professional chrome-vanadium wrenches and sockets arranged in a geometric, flat-lay composition on a dark textured slate background. Lighting is dramatic and directional, creating sharp highlights on the metallic surfaces to emphasize precision and engineering quality for a high-end industrial tool catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAnw6F_WwvvqXT9OGoAlUKRqSAuEC81rF9pVz5UbzjDdEkHmCSlpHs6bnO_q5TVpw2kWifZF5NPG4ldvlDfiW4PVDNDVJP80lw3N4CVn9TnOtiyVwEE_Gbla60QWgBZC4tL02XyjJzWxrFjDwZugYffxBNyHpwJOGZpIqrsSaTQeM64xd7BDEMNNNR3nGwzLWmzqJ-_kNiXlklMH44x8u1TOZOUAQf_8NzkTdhUjQbBHbFsBDZSKrSgeuPP_NZQE6GNKzH4kokuMtw"/>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Jogo Chaves Profissional</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-tertiary-container">15 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 320,00</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Smart digital laser measuring device with an illuminated blue LCD screen showing precise measurements. The device is placed on a blueprint in a dimly lit, modern architectural office. The visual style is sleek and technical, with high-contrast shadows and sharp cyan accents that signify high-tech precision instruments." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbzof5ABBuoVK22KZ0WDH8SprH7PS5q4WYv_BlyYicHN7QpfO0u2BZoO1vgWyMyjs0m-A-kmcGllzMP8nVuzeUL9Ug7sCMe3OCziRQazjf_yCzd6oPAKwU64z83Cn5HwZnJdQY3tWnYh0Ut3rUQREMo_DbPzjcx4Asl1TwIYsJFEGhRuDdPV8_A-QOlP0TFfXkYgf3DX84dn5mafOSiwaURZKAjrwrqcwLTRwQWqb2ktQwHnG8ormfR92pU0eiW0eBaEGPDHbXqVq1"/>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Trena Laser Digital S3</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-error">2 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 159,00</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Industrial grade heavy-duty safety helmet and protective goggles in a vibrant high-visibility orange color. The items are shown in a clean, high-tech industrial warehouse environment with cool ambient lighting. The style is crisp and commercial, showcasing safety equipment with a modern, high-performance look and feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzxfVmh6e3lK7bdaw8k4XCdki-0n_kSdk_k_V3eezp2yp3QojJFhfQMrbJ7GvTkwTlC8DH5j_k2l5wtQgor6N598ORyEpWZgOJeDgc8I6bMX4OF9kvsmnAZylAJGhE55M0Lz9MLZfD9SyjSh3B4mOwS0ETsYMUzSfpVCOgSs54evrUzRX_xIm5vbI1DJUdU1R6ECPSAbaOWxy-vcJbdnPKZleMA_axiTCyuYgY5MqGIKl82XLZzlSNzX4rVfLJGNj9iV7CSxUH5Bx8"/>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Kit Proteção Advanced</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-tertiary-container">120 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 89,00</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+<!-- Product Card 5 (Bento Style Variation) -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden col-span-2">
+<div class="flex h-32 md:h-40 gap-3 mb-3">
+<div class="w-2/3 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A large industrial electric generator with a robust yellow frame, set in a clean modern workshop with metallic flooring. The shot is an angled perspective showing mechanical details and power outlets. Lighting is high-key and professional, giving it a premium industrial feel for a sales catalog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQB-zcCFtIG9nDKr4rVEpgAnqdjtHHIwd8UWrH-bwRp2Bn2wye5wW36lUwyfKj8-n1kuWGshG1MbNvOJGUarw_aNj1Cp27qJlb3LUUPlXFz69iPesCmuG7TCRBC1V8oopaQHuICUMMKlztmSUil9JEGIacnG1Jar7WV61KT16PKABb5hfa1qutkEHKQWgeH4uUyTKkCsaQ4JfzrhpoDdI6P3Lz2uLrc3pBgY13RAT43pm_IJJg-HR5-E38RS_cdx8g_JWc23ZI6FrU"/>
+</div>
+<div class="w-1/3 flex flex-col gap-2">
+<div class="h-1/2 bg-surface-container rounded-lg skeleton-shimmer"></div>
+<div class="h-1/2 bg-surface-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed-dim opacity-50">analytics</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex-1">
+<h3 class="font-headline-sm text-lg text-on-surface leading-tight mb-1">Gerador de Energia Pro X5</h3>
+<p class="text-xs text-on-surface-variant mb-2">Gerador trifásico 5000W com partida remota.</p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-label-md bg-secondary-container/20 text-secondary-fixed px-2 py-0.5 rounded">Promoção</span>
+<span class="text-xs text-on-surface-variant font-label-md">Estoque: 5 un</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">A partir de</span>
+<span class="font-headline-sm text-primary-fixed-dim text-xl">R$ 4.290,00</span>
+<button class="mt-2 flex items-center gap-2 neomorphic-raised bg-primary-container text-on-primary-container px-4 py-2 rounded-lg active:scale-95 transition-all primary-glow font-label-lg">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+                            ADICIONAR
+                        </button>
+</div>
+</div>
+</div>
+<!-- More grid items for scroll feel -->
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Set of high-quality copper and brass plumbing fittings and valves, polished to a brilliant shine, displayed on a cool grey concrete surface. Sunlight catches the metallic edges creating beautiful lens flares. The scene is modern and professional, portraying industrial building materials with an artistic, high-end design touch." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDdWQhokG-sGZV2BZ2TxcmKyXR7D5a3MX8zabBUXZOPojYU7EPG1sA1emTkX51MSLoae35oR4zy1OSS6ueVM1DgP8uCtaLMfgPv_-1zerwnC4zuUBh_y9XJv1KagmXz3GsWx84VeZfs2rvKGvvJn1u-uT4_w7fGosy4g3i3Xo5rWzcbeZX3k2yHVdPAxGeUbeg8v0NDUsmeMNJA7l2MMWcz7QJMfKVg2YZvtwHMe2zOCQTEh2utX4Mm-ES-5cSxuCcSur0J_ZYOLu2"/>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Kit Hidráulico Master</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-tertiary-container">89 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 215,50</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+<div class="neomorphic-raised rounded-xl p-3 flex flex-col relative group active-scale overflow-hidden">
+<div class="aspect-square w-full rounded-lg mb-3 overflow-hidden bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="A futuristic professional-grade digital multimeter with a vibrant OLED display showing electrical waveforms and numbers. The device is being held by a hand in a workshop, surrounded by circuit boards and components. The lighting is low-key with teal and violet accents, giving it a cutting-edge technological feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaSYy3EiEmEOtxsymP0mY2ParMHEASj0xGbI4vVQIF2w7btzvlQCJEt5cZgUYYQd4QEkWejeYqh6ccWY5xm2zSHl1rCt0R4hSUgmRI-NujbbYwa1eDJpe4um_Dj89ew7SZezvI13xK8BP0EXvtty2jFGGYdH3v8OzwLuKnOZvkoN2g0YvcnQM74IDffPVnOxppIJTu5RI_vM7S8Vgq4tAbJ5YOk2DMxQzHgAXvQA8Dy_is-AoSi2vV2J_ci_qK5R31J37o97bzOA6h"/>
+</div>
+<h3 class="font-headline-sm text-sm text-on-surface leading-tight mb-1 truncate">Multímetro Digital Pro</h3>
+<div class="flex items-center gap-1 mb-2">
+<span class="text-xs text-on-surface-variant font-label-md">Estoque:</span>
+<span class="text-xs font-label-md text-tertiary-container">12 un</span>
+</div>
+<div class="mt-auto flex justify-between items-end">
+<div class="flex flex-col">
+<span class="text-[10px] text-on-surface-variant uppercase font-label-md tracking-wider">Preço</span>
+<span class="font-headline-sm text-primary-fixed-dim">R$ 549,00</span>
+</div>
+<button class="neomorphic-raised bg-primary-container/10 text-primary-fixed-dim p-2 rounded-lg active:scale-90 transition-transform primary-glow">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for Quick Actions -->
+<button class="fixed right-6 bottom-28 w-14 h-14 glass-panel rounded-2xl flex items-center justify-center text-primary-fixed-dim shadow-xl border border-primary-fixed-dim/20 z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">barcode_scanner</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.4)] flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200 relative" href="#">
+<span class="material-symbols-outlined mb-1">shopping_cart</span>
+<span class="font-label-md text-label-md">Cart</span>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-error text-on-error rounded-full text-[10px] flex items-center justify-center font-bold">3</div>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for add to cart
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (window.navigator.vibrate) {
+                    window.navigator.vibrate(10);
+                }
+                
+                // Visual feedback for 'add' buttons
+                if (this.querySelector('.material-symbols-outlined')?.textContent === 'add') {
+                    const icon = this.querySelector('.material-symbols-outlined');
+                    icon.textContent = 'check';
+                    this.classList.add('bg-primary-fixed-dim', 'text-on-primary-fixed');
+                    setTimeout(() => {
+                        icon.textContent = 'add';
+                        this.classList.remove('bg-primary-fixed-dim', 'text-on-primary-fixed');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Search bar interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.remove('neomorphic-inset');
+            searchInput.parentElement.classList.add('bg-surface-variant/30');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.add('neomorphic-inset');
+            searchInput.parentElement.classList.remove('bg-surface-variant/30');
+        });
+    </script>
+</body></html>

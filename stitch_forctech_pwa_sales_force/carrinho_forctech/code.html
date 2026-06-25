@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Carrinho - forcTech</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#e2e2e8",
+                    "primary-container": "#00e5ff",
+                    "on-tertiary-fixed": "#251a00",
+                    "surface-tint": "#00daf3",
+                    "surface": "#111317",
+                    "secondary-fixed-dim": "#b6c4ff",
+                    "tertiary-fixed": "#ffdf96",
+                    "outline-variant": "#3b494c",
+                    "background": "#111317",
+                    "on-secondary": "#002780",
+                    "on-primary-fixed-variant": "#004f58",
+                    "surface-container": "#1e2024",
+                    "inverse-on-surface": "#2f3035",
+                    "tertiary-container": "#fec931",
+                    "surface-container-lowest": "#0c0e12",
+                    "on-background": "#e2e2e8",
+                    "tertiary": "#ffeac0",
+                    "on-tertiary-container": "#6f5500",
+                    "surface-container-low": "#1a1c20",
+                    "surface-container-high": "#282a2e",
+                    "on-secondary-fixed": "#001550",
+                    "surface-variant": "#333539",
+                    "on-surface": "#e2e2e8",
+                    "surface-bright": "#37393e",
+                    "outline": "#849396",
+                    "secondary": "#b6c4ff",
+                    "surface-dim": "#111317",
+                    "error": "#ffb4ab",
+                    "inverse-primary": "#006875",
+                    "primary-fixed": "#9cf0ff",
+                    "on-surface-variant": "#bac9cc",
+                    "on-secondary-fixed-variant": "#003ab3",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "on-tertiary": "#3e2e00",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "secondary-fixed": "#dce1ff",
+                    "tertiary-fixed-dim": "#f3bf26",
+                    "secondary-container": "#0050ee",
+                    "on-primary-container": "#00626e",
+                    "primary-fixed-dim": "#00daf3",
+                    "on-secondary-container": "#d4dbff",
+                    "on-primary": "#00363d",
+                    "primary": "#c3f5ff",
+                    "surface-container-highest": "#333539",
+                    "on-primary-fixed": "#001f24"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Outfit"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Outfit"],
+                    "label-lg": ["Inter"],
+                    "headline-lg": ["Outfit"],
+                    "headline-md": ["Outfit"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0F1115;
+            color: #e2e2e8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .neomorphic-raised {
+            background: #111317;
+            box-shadow: -4px -4px 10px rgba(255, 255, 255, 0.05), 
+                        4px 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        .neomorphic-inset {
+            background: #111317;
+            box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.03), 
+                        inset 4px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .glass-card {
+            background: rgba(30, 32, 36, 0.6);
+            backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .primary-glow {
+            box-shadow: 0 0 20px rgba(0, 218, 243, 0.2);
+        }
+        .skeleton-sweep {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            background-size: 200% 100%;
+            animation: sweep 2s infinite linear;
+        }
+        @keyframes sweep {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #00daf3 !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md bg-background min-h-screen pb-40">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform p-2 hover:bg-white/5 rounded-full">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-fixed-dim">Carrinho</h1>
+</div>
+<button class="material-symbols-outlined text-primary active:scale-95 transition-transform p-2 hover:bg-white/5 rounded-full">sync</button>
+</header>
+<main class="pt-24 px-margin-mobile space-y-md">
+<!-- Cart List Section -->
+<section class="space-y-sm">
+<h2 class="font-label-lg text-label-lg text-on-surface-variant uppercase tracking-widest">Itens do Pedido</h2>
+<!-- Cart Item 1 -->
+<div class="neomorphic-raised rounded-xl p-md flex items-center gap-md group transition-all duration-300">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro cinematic shot of a high-tech industrial hardware component, sleek brushed metal textures with cyan neon reflections, professional studio lighting against a dark carbon fiber background, ultra-realistic 8k render with depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5jfmePjE364TaUYMniEQx5kYNF8qHGh_eQZngDQKPljhEHP9cEIBgN1ORBMDbFrkZB_1g79d1B__iShpOzllx_nsTJ3MmAIZxoNEbc2NoXaEX_ZnlB_2B9HDA7qkYQBlxEbb-CzJyhJVaMfYmC2SK6_RH3d3xQrXxuC4pRMu8JcXrDluvhRkzvScv-wa82enFIVMN188gMu24SQXc3AWiDbrL0NXklVPzp5A-ao690B18pBrRiJm3141S1R638-OhxOXW5VKiXf0i"/>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="font-headline-sm text-headline-sm truncate text-on-surface">Válvula de Fluxo X-20</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">R$ 1.250,00</p>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<button class="material-symbols-outlined text-error opacity-60 hover:opacity-100 transition-opacity text-sm">delete</button>
+<div class="flex items-center bg-surface-container-lowest rounded-full p-1 neomorphic-inset">
+<button class="w-8 h-8 flex items-center justify-center text-primary-fixed-dim active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-md">remove</span>
+</button>
+<span class="px-2 font-label-lg text-primary">02</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary-fixed-dim active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-md">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Cart Item 2 -->
+<div class="neomorphic-raised rounded-xl p-md flex items-center gap-md group transition-all duration-300">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a premium electronic sensor module, translucent black casing revealing glowing internal circuit patterns in electric blue, high-performance tech aesthetic, futuristic industrial design, dark atmospheric background with soft bokeh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3IYQoIriHqjANAgwuZi50B8014LQIhuBVeyPESyh3BDsKDWmKIquzxaocsTivs-TuC7B3q_giRfm5UlVcpfQ1AIf0JK8GZRA0WzSCccEm4BzhoofI0pBidSPDx03AgfAgjG-XFIBwxJXHDdj7wME6db52tkR0IK2X8TKI1FZkL_wkvzNegbWEu2OGvjwyI-_-dxwPSr63T90QxYV4TBKLdM1QQGgrmu-qR_m3I_RNTa-yLsNuhc-Dal2jwdGvaJGCGR2iABmmVSzF"/>
+</div>
+<div class="flex-grow min-w-0">
+<h3 class="font-headline-sm text-headline-sm truncate text-on-surface">Sensor Óptico Pro</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">R$ 450,00</p>
+</div>
+<div class="flex flex-col items-end gap-sm">
+<button class="material-symbols-outlined text-error opacity-60 hover:opacity-100 transition-opacity text-sm">delete</button>
+<div class="flex items-center bg-surface-container-lowest rounded-full p-1 neomorphic-inset">
+<button class="w-8 h-8 flex items-center justify-center text-primary-fixed-dim active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-md">remove</span>
+</button>
+<span class="px-2 font-label-lg text-primary">01</span>
+<button class="w-8 h-8 flex items-center justify-center text-primary-fixed-dim active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-md">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Checkout Details Section -->
+<section class="glass-card rounded-xl p-md space-y-md border border-white/5 mt-lg">
+<h2 class="font-label-lg text-label-lg text-primary tracking-widest uppercase">Dados do Checkout</h2>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Cliente</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low neomorphic-inset border-none rounded-xl px-md font-body-md text-on-surface appearance-none">
+<option>Selecione um cliente...</option>
+<option selected="">Indústrias TechMatrix Ltda</option>
+<option>Construtora Alpha S.A.</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Condição de Venda</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low neomorphic-inset border-none rounded-xl px-md font-body-md text-on-surface appearance-none">
+<option>Atacado</option>
+<option selected="">Venda Direta</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Plano Pagto.</label>
+<div class="relative">
+<select class="w-full h-12 bg-surface-container-low neomorphic-inset border-none rounded-xl px-md font-body-md text-on-surface appearance-none">
+<option>30 dias</option>
+<option selected="">30/60/90</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant px-1">Desconto (%)</label>
+<input class="w-full h-12 bg-surface-container-low neomorphic-inset border-none rounded-xl px-md font-body-md text-on-surface focus:ring-1 focus:ring-primary-fixed-dim" placeholder="0.00" type="number" value="5"/>
+</div>
+</section>
+<!-- Totals Summary -->
+<section class="neomorphic-raised rounded-xl p-md space-y-sm">
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>R$ 2.950,00</span>
+</div>
+<div class="flex justify-between font-body-sm text-on-surface-variant">
+<span>Desconto (5%)</span>
+<span class="text-error">- R$ 147,50</span>
+</div>
+<div class="h-px bg-white/5 my-xs"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary-fixed-dim">R$ 2.802,50</span>
+</div>
+</section>
+</main>
+<!-- Footer Action -->
+<div class="fixed bottom-20 w-full px-margin-mobile pb-md z-40 bg-gradient-to-t from-background via-background/90 to-transparent pt-lg">
+<button class="w-full h-16 bg-gradient-to-r from-primary-container to-secondary-container text-on-secondary font-headline-sm text-headline-sm rounded-xl primary-glow active:scale-95 transition-all flex items-center justify-center gap-md">
+            Finalizar Pedido
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 h-20 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.4)] rounded-t-xl flex justify-around items-center pb-safe px-2">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Products -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Products</span>
+</a>
+<!-- Cart (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-label-md text-label-md">Cart</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for quantity controls
+        document.querySelectorAll('.neomorphic-inset').forEach(control => {
+            const buttons = control.querySelectorAll('button');
+            const span = control.querySelector('span');
+            
+            buttons[0].addEventListener('click', () => {
+                let val = parseInt(span.innerText);
+                if(val > 1) span.innerText = (val - 1).toString().padStart(2, '0');
+            });
+
+            buttons[1].addEventListener('click', () => {
+                let val = parseInt(span.innerText);
+                span.innerText = (val + 1).toString().padStart(2, '0');
+            });
+        });
+    </script>
+</body></html>
