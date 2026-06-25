@@ -185,14 +185,14 @@
 <label class="text-label-md ml-1 opacity-70">Usuário</label>
 <div class="neu-inset rounded-lg px-md py-3 flex items-center gap-sm">
 <span class="material-symbols-outlined text-on-surface-variant text-md">person</span>
-<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md" placeholder="admin" required="" type="text"/>
+<input id="login-user" class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md" placeholder="Cód Vendedor (Ex: 4000)" required="" type="text"/>
 </div>
 </div>
 <div class="space-y-xs">
 <label class="text-label-md ml-1 opacity-70">Senha</label>
 <div class="neu-inset rounded-lg px-md py-3 flex items-center gap-sm">
 <span class="material-symbols-outlined text-on-surface-variant text-md">lock</span>
-<input class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md" placeholder="••••••••" required="" type="password"/>
+<input id="login-pass" class="bg-transparent border-none p-0 focus:ring-0 w-full text-body-md" placeholder="••••••••" required="" type="password"/>
 </div>
 </div>
 <button class="w-full bg-primary-container text-on-primary-container font-headline-sm text-headline-sm py-4 rounded-xl primary-glow active:scale-95 transition-all duration-200" type="submit">
@@ -431,39 +431,54 @@
         let cartItems = [];
         let currentTab = 'home';
 
-        // Login Logic
-        document.getElementById('login-form').addEventListener('submit', (e) => {
+               // Login Logic
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
             btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span>';
             
-            setTimeout(() => {
-                document.getElementById('login-screen').classList.add('hidden');
-                document.querySelector('header').classList.remove('hidden');
-                document.getElementById('app-container').classList.remove('hidden');
-                document.querySelector('nav').classList.remove('hidden');
-            }, 800);
+            const user = document.getElementById('login-user').value;
+            const pass = document.getElementById('login-pass').value;
+
+            try {
+                // SE O SEU TUNEL MUDOU, ATUALIZE O LINK ABAIXO
+                const response = await fetch('https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user, pass })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Salva os dados no celular
+                    localStorage.setItem('codusur', data.codusur);
+                    localStorage.setItem('nomeVendedor', data.nome);
+                    if(data.filiais && data.filiais.length > 0) {
+                        localStorage.setItem('codfilial', data.filiais[0].codigo);
+                    } else {
+                        localStorage.setItem('codfilial', "1");
+                    }
+
+                    // Atualiza o nome na tela de perfil
+                    const profileName = document.querySelector('#profile-tab h2');
+                    if(profileName) profileName.innerText = data.nome;
+
+                    document.getElementById('login-screen').classList.add('hidden');
+                    document.querySelector('header').classList.remove('hidden');
+                    document.getElementById('app-container').classList.remove('hidden');
+                    document.querySelector('nav').classList.remove('hidden');
+                } else {
+                    alert(data.message || 'Erro ao fazer login');
+                    btn.innerHTML = originalText;
+                }
+            } catch (err) {
+                alert('Erro de conexão com o servidor.');
+                btn.innerHTML = originalText;
+            }
         });
 
-        // Navigation Logic
-        function switchTab(tabId) {
-            currentTab = tabId;
-            
-            // UI Updates
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-
-            // Nav Button Styling
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                const isMatch = btn.dataset.tab === tabId;
-                btn.className = isMatch 
-                    ? "nav-btn flex flex-col items-center justify-center text-primary-fixed-dim bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-all duration-200" 
-                    : "nav-btn flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-all duration-200";
-                
-                const icon = btn.querySelector('.material-symbols-outlined');
-                if(isMatch) {
                     icon.style.fontVariationSettings = "'FILL' 1";
                 } else {
                     icon.style.fontVariationSettings = "'FILL' 0";
@@ -549,19 +564,25 @@
         document.getElementById('cart-discount').addEventListener('input', updateCartUI);
 
         // Simulated API Call to https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com
-        async function fetchSync() {
+              async function fetchSync() {
             try {
-               const response = await fetch('https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com/api/sync/manual', {
+                const codusur = localStorage.getItem('codusur') || 4000;
+                const codfilial = localStorage.getItem('codfilial') || "1";
+
+                const response = await fetch('https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com/api/sync/manual', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ codusur: 4000, codfilial: "1", numregiao: 1 })
+                    body: JSON.stringify({ codusur: parseInt(codusur), codfilial: codfilial, numregiao: 1 })
                 });
                 const data = await response.json();
                 console.log('Sync data:', data);
+                alert("Sincronização concluída com sucesso!");
             } catch (err) {
-                console.warn('Backend sync unavailable at https://expectations-cornwall-backgrounds-volleyball.trycloudflare.com');
+                console.warn('Backend sync unavailable', err);
+                alert("Erro ao sincronizar. Verifique a conexão.");
             }
         }
+
 
         // SW/PWA logic (Placeholder for users to extract)
         /*
